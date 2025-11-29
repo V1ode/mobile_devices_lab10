@@ -21,7 +21,6 @@ try {
 
     $query = "SELECT name, sound FROM animals";
     $result = $pdo->query($query); 
-    echo $result;
     
     $row = $result->fetch(PDO::FETCH_ASSOC);
 
@@ -29,13 +28,13 @@ try {
         echo "here" . "<br>";
         
         if($row['name'] != $prevAnimal) {            
-            echo $row['name'] . "<br>";
-            echo $row['text'];
+            echo $row['name'] . " ins<br>";
+            echo $row['sound'];
         } else {
             echo "there" . "<br>";            
             $row = $result->fetch(PDO::FETCH_ASSOC);
             echo $row['name'] . "<br>";
-            echo $row['text'];
+            echo $row['sound'];
         }
 
         echo $prevAnimal;

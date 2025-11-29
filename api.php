@@ -17,23 +17,24 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->exec("SET NAMES 'UTF8'");
 
-    $prevAnimal = isset($_GET['prevAnimal']) ? $_GET['prevAnimal'] : "";
+    $prevAnimal = isset($_POST['prevAnimal']) ? $_POST['prevAnimal'] : "1";
 
     $query = "SELECT name, sound FROM animals";
     $result = $pdo->query($query); 
     
     $row = $result->fetch(PDO::FETCH_ASSOC);
+    echo $prevAnimal;
 
     if ($row) {     
         echo "here" . "<br>";
         
         if($row['name'] != $prevAnimal) {            
-            echo $row['name'] . " ins<br>";
+            echo $row['name'] . " ";
             echo $row['sound'];
         } else {
             echo "there" . "<br>";            
             $row = $result->fetch(PDO::FETCH_ASSOC);
-            echo $row['name'] . "<br>";
+            echo $row['name'] . " ";
             echo $row['sound'];
         }
 

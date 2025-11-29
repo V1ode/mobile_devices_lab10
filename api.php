@@ -32,11 +32,13 @@ try {
             echo $row['name'] . "<br>";
             echo $row['text'];
         } else {
-            echo "there" . "<br>";
+            echo "there" . "<br>";            
             $row = $result->fetch(PDO::FETCH_ASSOC);
             echo $row['name'] . "<br>";
             echo $row['text'];
-        }        
+        }
+
+        echo $prevAnimal;
     } 
 
 } catch (PDOException $e) {

@@ -18,7 +18,8 @@ try {
 
     $prevAnimal = isset($_POST['prevAnimal']) ? $_POST['prevAnimal'] : "1";
 
-    $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
+    $query = "SELECT name, sound FROM animals order by random() limit 2" . 
+    "offset (mod((random()*100)::integer, (SELECT count(*) from animals)-1)::integer+1)::integer";
     $result = $pdo->query($query); 
     
     $row = $result->fetch(PDO::FETCH_ASSOC);

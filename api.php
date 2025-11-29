@@ -37,7 +37,9 @@ try {
     
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    echo "Inside";
     if ($row) {
+        echo "Deep Inside";
         $response['success'] = true;
         if($row['name'][0] != $prevAnimal) {
             $response['name'] = $row['name'][0];
@@ -58,5 +60,6 @@ try {
 }
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE);
+echo "After";
 exit();
 ?>

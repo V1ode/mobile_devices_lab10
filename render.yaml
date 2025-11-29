@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: laba10-holidays-api
+    name: Zoo
     env: php
     plan: free
     buildCommand: ""

@@ -49,7 +49,7 @@ try {
     ];
 }
 
-echo json_encode($response, JSON_UNESCAPED_UNICODE);
+echo $response;
 echo "After";
 exit();
 ?>

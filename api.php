@@ -19,7 +19,6 @@ try {
     $pdo->exec("SET NAMES 'UTF8'");
 
     $prevAnimal = isset($_GET['prevAnimal']) ? $_GET['prevAnimal'] : "";
-    $search_date = ($day == 1) ? date("Y-m-d") : date("Y-m-d", strtotime("+1 day"));
 
     $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
     $stmt = $pdo->prepare($query);

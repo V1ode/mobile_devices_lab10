@@ -18,7 +18,7 @@ try {
 
     $prevAnimal = isset($_POST['prevAnimal']) ? $_POST['prevAnimal'] : "1";
 
-    $query = "SELECT name, sound FROM animals";
+    $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
     $result = $pdo->query($query); 
     
     $row = $result->fetch(PDO::FETCH_ASSOC);

@@ -21,21 +21,21 @@ try {
     $prevAnimal = isset($_GET['prevAnimal']) ? $_GET['prevAnimal'] : "";
 
     $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute();
+    $result = $pdo->query($query);    
     
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
 
     if ($row) {
         echo "here" . "<br>";
-        $response['success'] = true;
-        if($row['name'][0] != $prevAnimal) {
-            echo $row[0];
-            echo $row['name'][0] . "<br>";
-            echo $row['text'][0];
+        
+        if($row['name'] != $prevAnimal) {
+            echo $row;
+            echo $row['name'] . "<br>";
+            echo $row['text'];
         } else {
-            echo $row['name'][1] . "<br>";
-            echo $row['text'][1];
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            echo $row['name'] . "<br>";
+            echo $row['text'];
         }        
     } 
 

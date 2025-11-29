@@ -13,11 +13,11 @@ ini_set('default_charset', 'UTF-8');
 mb_internal_encoding('UTF-8');
 
 // Данные из файла
-$host = "";
-$port = "";
-$database = "";
-$username = "";
-$password = "";
+$host = "dpg-d4lfklfpm1nc73dgmcs0-a";
+$port = "5432";
+$database = "zoo_db_uvr3";
+$username = "zoo_db_uvr3_user";
+$password = "ODbxeYoLCqxlCyqXycZunltQMzgSsuMA";
 
 
 $response = [];

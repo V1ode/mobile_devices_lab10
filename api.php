@@ -10,7 +10,6 @@ $username = "zoo_db_uvr3_user";
 $password = "ODbxeYoLCqxlCyqXycZunltQMzgSsuMA";
 
 
-
 try {
     // Подключение к PostgreSQL
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$database", $username, $password);
@@ -23,28 +22,22 @@ try {
     $result = $pdo->query($query); 
     
     $row = $result->fetch(PDO::FETCH_ASSOC);
-    echo $prevAnimal;
 
-    if ($row) {     
-        echo "here" . "<br>";
-        
+    if ($row) {            
         if($row['name'] != $prevAnimal) {            
             echo $row['name'] . " ";
             echo $row['sound'];
-        } else {
-            echo "there" . "<br>";            
+        } else {           
             $row = $result->fetch(PDO::FETCH_ASSOC);
+            
             echo $row['name'] . " ";
             echo $row['sound'];
         }
-
-        echo $prevAnimal;
     } 
 
 } catch (Exception $e) {
     echo "Ошибка сервера: $e->getMessage()";
 }
 
-echo "After";
 exit();
 ?>

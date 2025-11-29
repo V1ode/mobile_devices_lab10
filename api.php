@@ -20,7 +20,8 @@ try {
     $prevAnimal = isset($_GET['prevAnimal']) ? $_GET['prevAnimal'] : "";
 
     $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
-    $result = $pdo->query($query);    
+    $result = $pdo->query($query); 
+    echo $result;
     
     $row = $result->fetch(PDO::FETCH_ASSOC);
 

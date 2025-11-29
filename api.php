@@ -27,16 +27,14 @@ try {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($row) {
-        echo $row['name'][0] . "<br>";
         $response['success'] = true;
         if($row['name'][0] != $prevAnimal) {
-            echo "if<br>";
-            $response['name'] = $row['name'][0];
-            $response['sound'] = $row['text'][0];
+            echo $row;
+            echo $row['name'][0]. "<br>";
+            echo $row['text'][0];
         } else {
-            echo $row . " else<br>";
-            $response['name'] = $row['name'][1];
-            $response['sound'] = $row['text'][1];
+            echo $row['name'][1]. "<br>";
+            echo $row['text'][1];
         }        
     } 
 
@@ -49,7 +47,6 @@ try {
     ];
 }
 
-echo $response;
 echo "After";
 exit();
 ?>

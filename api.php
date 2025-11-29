@@ -1,16 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
 
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
-
-ini_set('default_charset', 'UTF-8');
-mb_internal_encoding('UTF-8');
 
 // Данные из файла
 $host = "dpg-d4lfklfpm1nc73dgmcs0-a";

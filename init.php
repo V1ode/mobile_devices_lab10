@@ -58,7 +58,7 @@ try {
         ['Рыба', 'Буль-Буль']
     ];
     
-    $stmt = $pdo->prepare("INSERT INTO animals (text, text) VALUES (?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO animals (name, sound) VALUES (?, ?)");
     
     $inserted = 0;
     foreach ($data as $row) {

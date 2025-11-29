@@ -26,14 +26,15 @@ try {
     
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    echo "Inside";
     if ($row) {
-        echo "Deep Inside";
+        echo $row['name'][0] . "<br>";
         $response['success'] = true;
         if($row['name'][0] != $prevAnimal) {
+            echo "if<br>";
             $response['name'] = $row['name'][0];
             $response['sound'] = $row['text'][0];
         } else {
+            echo $row . " else<br>";
             $response['name'] = $row['name'][1];
             $response['sound'] = $row['text'][1];
         }        

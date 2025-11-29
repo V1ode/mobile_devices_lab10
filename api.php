@@ -19,7 +19,7 @@ try {
 
     $prevAnimal = isset($_GET['prevAnimal']) ? $_GET['prevAnimal'] : "";
 
-    $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
+    $query = "SELECT name, sound FROM animals";
     $result = $pdo->query($query); 
     echo $result;
     
@@ -27,7 +27,6 @@ try {
 
     if ($row) {     
         echo "here" . "<br>";
-        echo $row;
         
         if($row['name'] != $prevAnimal) {            
             echo $row['name'] . "<br>";
@@ -42,7 +41,7 @@ try {
         echo $prevAnimal;
     } 
 
-} catch (PDOException $e) {
+} catch (Exception $e) {
     echo "Ошибка сервера: $e->getMessage()";
 }
 

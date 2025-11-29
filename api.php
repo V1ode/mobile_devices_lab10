@@ -28,34 +28,32 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->exec("SET NAMES 'UTF8'");
 
-    $day = isset($_GET['day']) ? intval($_GET['day']) : 1;
+    $prevAnimal = isset($_GET['prevAnimal']) ? $_GET['prevAnimal'] : "";
     $search_date = ($day == 1) ? date("Y-m-d") : date("Y-m-d", strtotime("+1 day"));
 
-    $query = "SELECT text FROM holidays WHERE data_gregorian = ?";
+    $query = "SELECT name, sound FROM animals ORDER BY RANDOM()";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$search_date]);
+    $stmt->execute();
     
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($row) {
         $response['success'] = true;
-        $response['holiday'] = $row['text'];
-        $response['date'] = $search_date;
-        $response['day_type'] = $day;
-    } else {
-        $response['success'] = false;
-        $response['holiday'] = "На " . $search_date . " праздников не найдено";
-        $response['date'] = $search_date;
-        $response['day_type'] = $day;
-    }
+        if($row['name'][0] != $prevAnimal) {
+            $response['name'] = $row['name'][0];
+            $response['sound'] = $row['text'][0];
+        } else {
+            $response['name'] = $row['name'][1];
+            $response['sound'] = $row['text'][1];
+        }        
+    } 
 
 } catch (PDOException $e) {
     $response = [
         'success' => false,
         'error' => $e->getMessage(),
-        'holiday' => 'Ошибка сервера',
-        'date' => date("Y-m-d"),
-        'day_type' => isset($day) ? $day : 1
+        'name' => 'Ошибка сервера',
+        'sound' => 'Ошибка сервера'
     ];
 }
 

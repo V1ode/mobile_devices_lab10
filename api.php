@@ -25,14 +25,14 @@ try {
     
     $row = $result->fetch(PDO::FETCH_ASSOC);
 
-    if ($row) {
-        echo "here" . "<br>";
-        
+    if ($row) {        
         if($row['name'] != $prevAnimal) {
+            echo "here" . "<br>";
             echo $row;
             echo $row['name'] . "<br>";
             echo $row['text'];
         } else {
+            echo "there" . "<br>";
             $row = $result->fetch(PDO::FETCH_ASSOC);
             echo $row['name'] . "<br>";
             echo $row['text'];
